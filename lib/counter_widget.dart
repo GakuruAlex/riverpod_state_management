@@ -7,6 +7,7 @@ class CounterWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    debugPrint("Counter Widget loaded");
     int counter = ref.watch(counterProvider);
     return Center(
       child: Text(
