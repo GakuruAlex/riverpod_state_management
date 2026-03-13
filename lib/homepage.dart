@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_state_management/counter_widget.dart';
+import 'package:riverpod_state_management/providers/counter_state_provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    debugPrint("Homepage loaded");
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(
@@ -18,13 +21,12 @@ class HomePage extends StatelessWidget {
         backgroundColor: Theme.of(context).primaryColorDark,
       ),
       body: CounterWidget(),
-      floatingActionButton: IconButton.filled(
-        onPressed: () {},
-        icon: Icon(
-          Icons.add,
-          size: 48,
-          color: Theme.of(context).colorScheme.onPrimary,
-        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          ref.read(counterProvider.notifier).state++;
+        },
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        child: Icon(Icons.add),
       ),
     );
   }
