@@ -13,21 +13,23 @@ class GreetingsWidget extends ConsumerWidget {
 
     return Center(
       child: greeting.when(
+        skipLoadingOnRefresh: false,
         data: (result) => Text(result, style: const TextStyle(fontSize: 32)),
         error: (err, stackTrace) => Column(
           mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               err.toString(),
               style: TextStyle(
                 fontSize: 32,
-                color: Theme.of(context).colorScheme.onError,
+                color: Theme.of(context).colorScheme.onErrorContainer,
               ),
             ),
             const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
-                ref.invalidate(greetingFutureProvider);
+                return ref.refresh(greetingFutureProvider);
               },
               child: const Text("Retry", style: TextStyle(fontSize: 32)),
             ),
