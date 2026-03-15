@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+//import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_state_management/homescreen.dart';
+import 'package:riverpod_state_management/screens/homescreen.dart';
 
 void main() {
+  //debugPaintSizeEnabled = true;
   runApp(
     ProviderScope(retry: (retryCount, error) => null, child: const MyApp()),
   );

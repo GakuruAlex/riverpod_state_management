@@ -7,8 +7,6 @@ class GreetingsWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print("Greetings Widget loaded");
-
     final greeting = ref.watch(greetingFutureProvider);
 
     return Center(
